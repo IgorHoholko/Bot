@@ -2,6 +2,8 @@ from telethon import TelegramClient, sync
 from telethon import functions, types
 from telethon import utils
 from telethon import events
+import asyncio
+import os
 
 api_id =  os.environ['API_ID']                  # API ID (получается при регистрации приложения на my.telegram.org)
 api_hash = os.environ['API_HASH']              # API Hash (оттуда же)
