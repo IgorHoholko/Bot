@@ -5,6 +5,7 @@ from telethon import events
 import asyncio
 import os
 
+
 api_id =  os.environ['API_ID']                  # API ID (получается при регистрации приложения на my.telegram.org)
 api_hash = os.environ['API_HASH']              # API Hash (оттуда же)
 phone_number =  os.environ['PHONE_NUMBER']    # Номер телефона аккаунта, с которого будет выполняться код
@@ -41,3 +42,4 @@ async def handler(event):
 
 print("I'm working")
 client.run_until_disconnected()
+client.run(os.getenv('TOKEN'))
