@@ -3,15 +3,16 @@ from telethon import functions, types
 from telethon import utils
 from telethon import events
 
-api_id = 388006                  # API ID (получается при регистрации приложения на my.telegram.org)
-api_hash = "90d6e13ca33ac535ef7002a698d7258c"              # API Hash (оттуда же)
-phone_number = "+375259441173"    # Номер телефона аккаунта, с которого будет выполняться код
+api_id =  os.environ['API_ID']                  # API ID (получается при регистрации приложения на my.telegram.org)
+api_hash = os.environ['API_HASH']              # API Hash (оттуда же)
+phone_number =  os.environ['PHONE_NUMBER']    # Номер телефона аккаунта, с которого будет выполняться код
 
 client = TelegramClient('SomeName', api_id, api_hash).start()
 
 
 username = '@ihoholko'
 mak = '@nmakeychik'
+
 me = client.get_me()
 from telethon import utils
 from telethon import events
