@@ -6,22 +6,25 @@ import asyncio
 import os
 
 
-api_id =  os.environ['API_ID']                  # API ID (получается при регистрации приложения на my.telegram.org)
-api_hash = os.environ['API_HASH']              # API Hash (оттуда же)
-phone_number =  os.environ['PHONE_NUMBER']    # Номер телефона аккаунта, с которого будет выполняться код
-
-client = TelegramClient('SomeName', api_id, api_hash).start()
-
-
+api_id =  os.environ['API_ID']                  
+api_hash = os.environ['API_HASH']              
+phone_number =  os.environ['PHONE_NUMBER']    
 username = '@ihoholko'
 mak = '@nmakeychik'
 
-me = client.get_me()
-from telethon import utils
-from telethon import events
+
+client = TelegramClient('SomeName', api_id, api_hash)
+client.connect()
+if not client.is_user_authorized():
+    me = client.sign_in(bot_token = os.getenv('TOKEN'))
 
 
-# 
+
+
+
+
+
+
 @client.on(events.NewMessage(incoming=True, chats=('+375 29 594 8978', 'Приватный канал')))
 async def handler(event):
 	persone = event.client
@@ -42,4 +45,3 @@ async def handler(event):
 
 print("I'm working")
 client.run_until_disconnected()
-client.run(os.getenv('TOKEN'))
