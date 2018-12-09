@@ -19,7 +19,7 @@ mirror_channel = os.environ['MIRROR_CHANNEL']
 owner = '@ihoholko'
 
 
-client = TelegramClient('SESSION', api_id, api_hash).start()
+client = TelegramClient('SomeName', api_id, api_hash).start()
 
 
 @client.on(events.NewMessage(incoming=True, chats=(chat)))
