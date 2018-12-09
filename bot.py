@@ -4,39 +4,39 @@ from telethon import utils
 from telethon import events
 import asyncio
 import os
+import telebot
 
 
+token = os.environ['TOKEN']
+MAIN_URL = 'https://api.telegram.org/bot{}/'.format(token)
 api_id =  os.environ['API_ID']                  
 api_hash = os.environ['API_HASH']              
-phone_number =  os.environ['PHONE_NUMBER']    
-username = '@ihoholko'
-mak = '@nmakeychik'
+phone_number =  os.environ['PHONE_NUMBER'] 
+chat = os.environ['CHAT_NAME']
+output_channel = os.environ['OUTPUT_CHANNEL']
+mirror_channel = os.environ['MIRROR_CHANNEL']
+
+owner = '@ihoholko'
 
 
-client = TelegramClient('SomeName', api_id, api_hash).start()
-# client.connect()
-# if not client.is_user_authorized():
-#     me = client.sign_in(bot_token = os.getenv('TOKEN'))
+client = TelegramClient('SESSION', api_id, api_hash).start()
 
 
-
-
-
-@client.on(events.NewMessage(incoming=True, chats=('+375 29 594 8978')))
+@client.on(events.NewMessage(incoming=True, chats=(chat)))
 async def handler(event):
 	persone = event.client
+	bot = telebot.TeleBot(token)
 
 	dialogs = await persone.get_dialogs()
 	message = dialogs[0].message.message
 	# # await event.respond()
 
-	await client.send_message(mak, str(message)  )
-
-
-
+	# await client.send_message(owner, str(message) )
+	# await bot.send_message(output_channel, str(message))
+	await bot.send_message(mirror_channel, str(message))
 
 	# result = await client(functions.messages.DeleteHistoryRequest(
-	#    	peer=mak,
+	#    	peer=owner,
 	#     max_id=0
 	# ))
 
