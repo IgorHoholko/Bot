@@ -13,19 +13,16 @@ username = '@ihoholko'
 mak = '@nmakeychik'
 
 
-client = TelegramClient('SomeName', api_id, api_hash)
-client.connect()
-if not client.is_user_authorized():
-    me = client.sign_in(bot_token = os.getenv('TOKEN'))
+client = TelegramClient('SomeName', api_id, api_hash).start()
+# client.connect()
+# if not client.is_user_authorized():
+#     me = client.sign_in(bot_token = os.getenv('TOKEN'))
 
 
 
 
 
-
-
-
-@client.on(events.NewMessage(incoming=True, chats=('+375 29 594 8978', 'Приватный канал')))
+@client.on(events.NewMessage(incoming=True, chats=('+375 29 594 8978')))
 async def handler(event):
 	persone = event.client
 
