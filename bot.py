@@ -12,7 +12,7 @@ MAIN_URL = 'https://api.telegram.org/bot{}/'.format(token)
 api_id =  os.environ['API_ID']                  
 api_hash = os.environ['API_HASH']              
 phone_number =  os.environ['PHONE_NUMBER'] 
-chat = os.environ['CHAT_NAME']
+# chat = os.environ['CHAT_NAME']
 output_channel = os.environ['OUTPUT_CHANNEL']
 mirror_channel = os.environ['MIRROR_CHANNEL']
 
@@ -22,7 +22,7 @@ owner = '@ihoholko'
 client = TelegramClient('SomeName', api_id, api_hash).start()
 
 
-@client.on(events.NewMessage(incoming=True, chats=(chat)))
+@client.on(events.NewMessage(incoming=True, chats=('Оп')))
 async def handler(event):
 	persone = event.client
 	bot = telebot.TeleBot(token)
